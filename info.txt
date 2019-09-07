@@ -1,3 +1,0 @@
-Name: Isha
-Email: pateli21@asmsa.org
-Class: Integrated Computer Science
