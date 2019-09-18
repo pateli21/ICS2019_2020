@@ -16,25 +16,16 @@ public class Program{
 		System.out.println("How many sides do you want your polygon to have? ");
 		int sides = in.nextInt();
 		int count = sides;
-		if (count > 0){
-			int sumInt = (sides - 2) * 180;
-			double sumEachTurn = 180 - (sumInt /sides);
-			t.forward(100);
-			t.left(sumEachTurn);
-			polygon(sides, count-1);
-		}
+		polygon(sides, count, t);
 	}
 	
-	public static void polygon(int sides, int count){
-		Turtle t;
-		t = new Turtle();
-		
+	public static void polygon(int sides, int count, Turtle t){		
 		if (count > 0){
 			int sumInt = (sides - 2) * 180;
 			double sumEachTurn = 180 - (sumInt /sides);
 			t.forward(100);
 			t.left(sumEachTurn);
-			polygon(sides, count-1);
+			polygon(sides, count-1, t);
 		}
 	}
 }
