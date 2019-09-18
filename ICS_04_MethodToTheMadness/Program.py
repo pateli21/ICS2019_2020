@@ -25,10 +25,10 @@ convertLand(acres)
 
 def polygon(sides):
     sumInt = (sides - 2) * 180
-    sumEach = 180 - (sumInt / sides)
+    sumEachTurn = 180 - (sumInt / sides)
     for i in range(sides):
         t.forward(25)
-        t.left(sumEach)
+        t.left(sumEachTurn)
 
 
 sides = int(input("How many sides do you want your polygon to have? "))

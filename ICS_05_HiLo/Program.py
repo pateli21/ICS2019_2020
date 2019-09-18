@@ -1,5 +1,6 @@
 import random
 
+#this function takes a guess, evluates it, and gives back the appropriate response
 def hiLo(magicNum, b, count, guessList):
     try: 
         guess = int(input("Guess a number between 1 and " + str(b) + ": "))
@@ -30,7 +31,7 @@ def hiLo(magicNum, b, count, guessList):
         hiLo(magicNum, b, count, guessList)
 
         
-
+#this asks if the player wants to play and reacts accordingly
 play = input("Would you like to play \"Guess the Number\"? (y/n): ")
 if play == "y":
     print("Instrustions: In this game you have to guess a number between 1 and the other number inclusive.\nAs you complete each level, the range of numbers will increase by five. \nGood Luck!")
@@ -40,6 +41,7 @@ elif play != "y" and play != "n":
         play = input("Would you like to play \"Guess the Number\"? (y/n): ")
 b = 5
 level = 1
+#this while loop keeps on running the game until the user quits the game
 while play == "y":
     print("\nLevel " + str(level))
     count = 0
@@ -47,6 +49,10 @@ while play == "y":
     magicNum = random.randint(1, b)
     hiLo(magicNum, b, count, guessList)
     play = input("Would you like to move on to the next level? (y/n): ")
+    if play != "y" and play != "n":
+        while play != "y" and play != "n":
+            print("You must answer with \"y\" or \"n\".")
+            play = input("Would you like to play \"Guess the Number\"? (y/n): ")
     b += 5
     level += 1
 
