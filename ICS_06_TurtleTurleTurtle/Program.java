@@ -29,9 +29,9 @@ public class Program{
 	 */ 
 	public static void polygon(int sides, int count, Turtle t){		
 		if (count > 0){
-			double sumEachTurn = 360/sides;
+			double eachTurn = 360.0 /sides;
 			t.forward(100);
-			t.left(sumEachTurn);
+			t.left(eachTurn);
 			polygon(sides, count-1, t);
 		}
 	}
