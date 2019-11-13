@@ -35,10 +35,11 @@ testX=X[100:]
 testy=y[100:]
 
 from sklearn.neural_network import MLPClassifier
-clf = MLPClassifier(hidden_layer_sizes=[5,8], max_iter=2000, random_state=0)
+clf = MLPClassifier(hidden_layer_sizes=[2,3], max_iter=2000, random_state=0)
+#print(dir(clf)))
 clf.fit(trainX, trainy)
-
 print(clf.coefs_)
+#print(clf.intercepts_)
 
 prediction=clf.predict(testX)
 print(clf.score(trainX,trainy))
