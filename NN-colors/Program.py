@@ -6,7 +6,7 @@ print(data)
 
 import matplotlib.pyplot as plt
 import seaborn as sns # visualization
-sns.pairplot( data=data,vars=(0,1,2,3), hue=4 )
+sns.pairplot(data=data, vars=(0,1,2), hue = 3)
 plt.show()
 
 #1. Sort of, some variables show distinct separations whereas in others, you cannot tell
@@ -16,8 +16,8 @@ plt.show()
 import numpy as np
 data=np.array(data)
 
-X=data[:,0:4] #This gets all the rows and only the first 4 columns.
-y=data[:,4]
+X=data[:,0:3] #This gets all the rows and only the first 4 columns.
+y=data[:,3]
 print(X.shape) #(150,4)
 print(y.shape) #(150,)
 
