@@ -3,82 +3,84 @@ import java.util.*;
 public class Program
 {
 	
-	
-    
     public static void main(String[] args)
     {
-        Square s=new Square(5);
-        System.out.println(s.area());
-        System.out.println(s);
-        
-        //from here
-        int[] list=new int[0];
-        long start=System.nanoTime();
-        for(int i=0;i<10000;i++)
-        {
-            list=append(list,(int)(Math.random()*100));
-        }
-        System.out.println((System.nanoTime()-start)/1e9);
-        //System.out.println( Arrays.toString(list) );
-        
-        list=new int[10000];
-        start=System.nanoTime();
-        for(int i=0;i<10000;i++)
-        {
-            list[i]=(int)(Math.random()*100);
-        }
-        System.out.println((System.nanoTime()-start)/1e9);
-        //to here
-        //System.out.println( Arrays.toString(list) );
-        
-        
-        //~ ArrayList list=new ArrayList();
-        //~ for(int i=0;i<1000;i++)list.add(i);
-        //~ System.out.println(list.get(5));
-        //~ System.out.println(list.set(987,314159));
-        //~ System.out.println(list);
-        
+		addTest1();
+		addTest2();
+		indexOfTest1();
+		indexOfTest2();
         setTest1();
         setTest2();
-        timeTest();
+        getTest1();
+        getTest2();
+        clearTest1();
+        clearTest2();
+        containsTest1();
+        containsTest2();
+        isEmptyTest1();
+        isEmptyTest2();
+        deleteTest1();
+        deleteTest2();
+        removeTest1();
+        removeTest2();
+        sizeTest1();
+        sizeTest2();
+    
+        addTimeTest();
+        deleteTimeTest();
     }
     
     
     
-    
-    
-    
-    
-    
-    
-    public static int[] append(int[] list,int value)
+    public static void addTest1()
     {
-        int[] newList=new int[list.length+1];
-        for(int i=0;i<list.length;i++) newList[i]=list[i];
-        newList[newList.length-1]=value;
-        return newList;
-    }
-    
-    
-    public static void timeTest()
+		ArrayList list=new ArrayList();
+		list.add(5);
+        list.add(6);
+        list.add(8);
+        list.add(16);
+        list.add(314);
+        if(list.get(0)==5 && list.get(1)==6 && list.get(2)==8 && list.get(3)==16 && list.get(4)==314) System.out.println("SUCCESS: ADD TEST 1");
+        else System.out.println("FAIL: ADD TEST 1");
+	}
+	
+	
+	public static void addTest2()
     {
-        
-        for(int i=0;i<29;i++)
+		boolean flag = false;
+		ArrayList list=new ArrayList();
+		for(int i=0;i<100;i++) list.add(i);
+        for(int i=0;i<100;i++)
         {
-            int n=(int)Math.pow(2,i);
-            double time=timeAdd(n);
-            System.out.println(i+","+n+","+time);
-        }
-    }
+			if (list.get(i) == i) flag = true;
+		}
+		if (flag == true) System.out.println("SUCCESS: ADD TEST 2");
+		else System.out.println("FAIL: ADD TEST 2");
+	}
     
     
-    public static double timeAdd(int n)
+    public static void indexOfTest1()
     {
-        ArrayList list=new ArrayList();
-        long start=System.nanoTime();
-        for(int i=0;i<n;i++)list.add(i);
-        return (System.nanoTime()-start)/1e9; 
-    }
+		ArrayList list=new ArrayList();
+		list.add(5);
+        list.add(6);
+        list.add(7);
+        list.add(8);
+        if(list.indexOf(5) == 0 && list.indexOf(9) == -1)System.out.println("SUCCESS: INDEX OF TEST 1");
+        else System.out.println("FAIL: INDEX OF TEST 1");
+	}
+	
+	
+	public static void indexOfTest2()
+    {
+		ArrayList list=new ArrayList();
+		list.add(5);
+        list.add(6);
+        list.add(7);
+        list.add(8);
+        if(list.indexOf(6) == 1 && list.indexOf(10) == -1)System.out.println("SUCCESS: INDEX OF TEST 2");
+        else System.out.println("FAIL: INDEX OF TEST 2");
+	}
     
     
     public static void setTest1()
@@ -93,6 +95,7 @@ public class Program
         if(v==6  && v2==14 )System.out.println("SUCCESS: SET TEST 1");
         else System.out.println("FAIL: SET TEST 1");
     }
+    
     
     public static void setTest2()
     {
@@ -115,36 +118,262 @@ public class Program
             System.out.println("FAIL: SET TEST 2");
         } 
     }
-}
-
-
-
-
-
-class Square
-{
-    //instance variables
-    double length;
     
-    //constructor
-    public Square(double length)
+    
+    public static void getTest1()
     {
-        this.length=length;
+		ArrayList list=new ArrayList();
+		list.add(5);
+        list.add(6);
+        list.add(7);
+        list.add(8);
+        if(list.get(1) == 6 && list.get(3) == 8)System.out.println("SUCCESS: GET TEST 1");
+        else System.out.println("FAIL: GET TEST 1");
+	}
+    
+    
+    public static void getTest2()
+    {
+		ArrayList list=new ArrayList();
+        list.add(5);
+        list.add(6);
+        list.add(7);
+        list.add(8);
+        try
+        {
+            list.get(5);
+            System.out.println("FAIL: GET TEST 2");
+        }
+        catch(IndexOutOfBoundsException e)
+        {
+            System.out.println("SUCCESS: GET TEST 2");
+        }
+        catch(Exception e)
+        {
+            System.out.println("FAIL: GET TEST 2");
+        } 
+	}
+    
+    
+    public static void clearTest1()
+    {
+		ArrayList list=new ArrayList();
+		list.add(5);
+        list.add(6);
+        list.add(7);
+        list.add(8);
+        list.clear();
+        if(list.size == 0)System.out.println("SUCCESS: CLEAR TEST 1");
+        else System.out.println("FAIL: CLEAR TEST 1");
+	}
+	
+	
+	public static void clearTest2()
+    {
+		ArrayList list=new ArrayList();
+		list.add(5);
+        list.add(6);
+        list.add(7);
+        list.add(8);
+        int a1v1 = list.get(1);
+        int a1v2 = list.get(2);
+        list.clear();
+        list.add(82);
+        list.add(10);
+        list.add(44);
+        list.add(58);
+        int a2v1 = list.get(1);
+        int a2v2 = list.get(2);
+        if(a1v1 == 6 && a1v2 == 7 && a2v1 == 10 && a2v2 == 44)System.out.println("SUCCESS: CLEAR TEST 2");
+        else System.out.println("FAIL: CLEAR TEST 2");
+	}
+    
+    
+    public static void containsTest1()
+    {
+		ArrayList list=new ArrayList();
+		list.add(5);
+        list.add(6);
+        list.add(7);
+        list.add(8);
+        if(list.contains(6) == true)System.out.println("SUCCESS: CONTAINS TEST 1");
+        else System.out.println("FAIL: CONTAINS TEST 1");
+	}
+    
+    
+    public static void containsTest2()
+    {
+		ArrayList list=new ArrayList();
+		list.add(5);
+        list.add(6);
+        list.add(7);
+        list.add(8);
+        if(list.contains(1) == false)System.out.println("SUCCESS: CONTAINS TEST 2");
+        else System.out.println("FAIL: CONTAINS TEST 2");
+	}
+    
+    
+    public static void isEmptyTest1()
+    {
+		ArrayList list=new ArrayList();
+		ArrayList anotherlist=new ArrayList();
+		list.add(5);
+        list.add(6);
+        list.add(7);
+        list.add(8);
+        list.clear();
+        if(list.isEmpty() == true && anotherlist.isEmpty() == true)System.out.println("SUCCESS: IS EMPTY TEST 1");
+        else System.out.println("FAIL: IS EMPTY TEST 1");
+	}
+    
+    
+    public static void isEmptyTest2()
+    {
+		ArrayList list=new ArrayList();
+		list.add(5);
+        list.add(6);
+        list.add(7);
+        list.add(8);
+        if(list.isEmpty() == false)System.out.println("SUCCESS: IS EMPTY TEST 2");
+        else System.out.println("FAIL: IS EMPTY TEST 2");
+	}
+    
+    
+        public static void deleteTest1()
+    {
+		ArrayList list=new ArrayList();
+		list.add(5);
+        list.add(6);
+        list.add(7);
+        list.add(8);
+        list.delete(1);
+        if(list.size() == 3 && list.get(1) == 7 && list.get(2) == 8)System.out.println("SUCCESS: DELETE TEST 1");
+        else System.out.println("FAIL: DELETE TEST 1");
+	}
+    
+    
+    public static void deleteTest2()
+    {
+		ArrayList list=new ArrayList();
+        list.add(5);
+        list.add(6);
+        list.add(7);
+        list.add(8);
+        list.add(3);
+        try
+        {
+            list.delete(7);
+            System.out.println("FAIL: DELETE TEST 2");
+        }
+        catch(IndexOutOfBoundsException e)
+        {
+            System.out.println("SUCCESS: DELETE TEST 2");
+        }
+        catch(Exception e)
+        {
+            System.out.println("FAIL: DELETE TEST 2");
+        } 
+	}
+	
+	
+	public static void removeTest1()
+    {
+		ArrayList list=new ArrayList();
+		list.add(5);
+        list.add(6);
+        list.add(7);
+        list.add(8);
+        list.add(3);
+        if(list.remove(6) == true)System.out.println("SUCCESS: REMOVE TEST 1");
+        else System.out.println("FAIL: REMOVE TEST 1");
+	}
+    
+    
+    public static void removeTest2()
+    {
+		ArrayList list=new ArrayList();
+		list.add(5);
+        list.add(6);
+        list.add(7);
+        list.add(8);
+        list.add(3);
+        list.remove(6);
+        if(list.get(1)== 7 && list.indexOf(6) == -1  && list.contains(6) == false)System.out.println("SUCCESS: REMOVE TEST 2");
+        else System.out.println("FAIL: REMOVE TEST 2");
+	}
+    
+    
+    public static void sizeTest1()
+    {
+		ArrayList list=new ArrayList();
+		list.add(5);
+        list.add(6);
+        list.add(7);
+        list.add(8);
+        if(list.size()== 4)System.out.println("SUCCESS: SIZE TEST 1");
+        else System.out.println("FAIL: SIZE TEST 1");
+	}
+    
+    
+    public static void sizeTest2()
+    {
+		ArrayList list=new ArrayList();
+		ArrayList anotherlist=new ArrayList();
+		list.add(5);
+        list.add(6);
+        list.add(7);
+        list.add(8);
+        list.clear();
+		anotherlist.add(5);
+        anotherlist.add(6);
+        anotherlist.add(7);
+        anotherlist.add(8);
+        anotherlist.remove(6);
+        if(list.size()== 0 && anotherlist.size() == 3)System.out.println("SUCCESS: SIZE TEST 2");
+        else System.out.println("FAIL: SIZE TEST 2");
+	}
+    
+    
+    
+	public static void addTimeTest()
+    {
+        for(int i=0;i<29;i++)
+        {
+            int n=(int)Math.pow(2,i);
+            double time=timeAdd(n);
+            System.out.println(i+","+n+","+time);
+        }
     }
     
-    //methods/function
-    public double area()
+    
+    public static void deleteTimeTest()
     {
-        return length*length;
+        for(int i=0;i<29;i++)
+        {
+            int n=(int)Math.pow(2,i);
+            double time=timeDelete(n);
+            System.out.println(i+","+n+","+time);
+        }
     }
     
-    public void scale(double factor)
+    
+    public static double timeAdd(int n)
     {
-        length*=factor;
+        ArrayList list=new ArrayList();
+        long start=System.nanoTime();
+        for(int i=0;i<n;i++)list.add(i);
+        return (System.nanoTime()-start)/1e9; 
     }
     
-    public String toString()
+    
+    public static double timeDelete( int n)
     {
-        return "I am a square with side length "+length+"!";
+		ArrayList list=new ArrayList();
+        for(int i=0;i<(Math.pow(2,28));i++)list.add(i);
+        long start=System.nanoTime();
+        for(int i=0;i<n;i++)list.delete(i);
+        return (System.nanoTime()-start)/1e9;
     }
-}
+}    
+    
+
