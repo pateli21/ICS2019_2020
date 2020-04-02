@@ -10,10 +10,10 @@ public interface ICSList
     public int get(int index);
     public void clear();
     public boolean contains(int value);
-    public boolean	equals(ICSList list);
+    public boolean equals(ICSList list);
     public boolean isEmpty();
     public int delete(int index);
-    public boolean	remove(int value); //removes first
-    public int	size();
+    public boolean remove(int value); //removes first
+    public int size();
     public int[] toArray();
 }
