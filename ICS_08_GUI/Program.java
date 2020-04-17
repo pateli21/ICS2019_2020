@@ -29,24 +29,22 @@ class MyPanel extends JPanel implements MouseMotionListener, MouseListener
     {
         //super.paint(g);
 		Graphics2D g2=(Graphics2D)g;
-        //g2.setColor(Color.WHITE);
-        //g2.fillRect(0,0,getWidth(),getHeight());
-        g2.setBackground(Color.WHITE);
-        if(count == 1) {
-			g2.setColor(Color.WHITE);
+        g2.setColor(Color.WHITE);
+        g2.fillRect(0,0,getWidth(),getHeight());
+        if(count == 1) g2.setColor(Color.RED); g2.fillOval(x,y,w,w);
+        if(count == 2) g2.setColor(Color.ORANGE); g2.fillOval(x,y,w,w);
+        if(count == 3) g2.setColor(Color.YELLOW); g2.fillOval(x,y,w,w);
+        if(count == 4) g2.setColor(Color.GREEN); g2.fillOval(x,y,w,w);
+        if(count == 5) g2.setColor(Color.BLUE); g2.fillOval(x,y,w,w);
+        if(count == 6) g2.setColor(Color.MAGENTA); g2.fillOval(x,y,w,w);
+        if(count == 7) {
+			g2.setColor(Color.PINK);
 			g2.fillRect(0,0,getWidth(),getHeight());
-			g2.setColor(Color.RED);
+			g2.setColor(Color.BLACK);
+			g.setFont(new Font("TimesRoman", Font.PLAIN, 25));
+			g2.drawString("eat the rainbow.", 227, 275);
+			g2.drawString("be the rainbow.", 229, 305);
 		}
-        if(count == 2) g2.setColor(Color.ORANGE);
-        if(count == 3) g2.setColor(Color.YELLOW);
-        if(count == 4) g2.setColor(Color.GREEN);
-        if(count == 5) {
-			g2.setColor(Color.BLUE);
-			String blue = "blue no matter who. please. PlEaSe. 2020";
-			g2.drawString(blue, x, y);
-		}
-        if(count == 6) g2.setColor(Color.MAGENTA);
-        g2.fillOval(x,y,w,w);
 	}
     
     public void mouseDragged(MouseEvent e){}
@@ -63,8 +61,8 @@ class MyPanel extends JPanel implements MouseMotionListener, MouseListener
     public void mousePressed(MouseEvent e)
     {
         if(e.getX()%2 == 0 && e.getY()%2 == 0)w+=50;
-        if(e.getX()%2 == 1 && e.getY()%2 == 1)w-=15;
-        if(count==6) count = 0;
+        if(e.getX()%2 == 1 && e.getY()%2 == 1)w+=15;
+        if(count==7) count = -1;
         count ++;
         repaint();
     }
