@@ -1,8 +1,9 @@
-package predatorprey;
 import java.util.ArrayList;
-import java.util.ArrayList.*;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Collections;
+import java.lang.*; 
+
 
 
 
@@ -111,35 +112,31 @@ public class Ecosystem{
 	
 	public void setAnimalDensity(double p){this.animalDensity = p;}
 	
-	public ArrayList<Prey> getAdjacentPrey(int x, int y){
-		// Adjacent coords
-		// xn = x -1, 0, +1
-		// yn = y -1, 0, +1
-		// account for wrapping?
-		
-		// one predator at, say (10, 11)
-		
+	public ArrayList<Prey> getAdjacentPrey(int x, int y){		
 		ArrayList<Prey> targets = new ArrayList<>();
 		
 		int[] pos;
 		for(Animal a:animalList){
 			if (a instanceof Prey){
 				pos = a.getPos();
-				int xn = a.x; int yn = a.y;
-				// pos[0] = xn; pos[1] = yn;
-				//check to see if it's a neighbor of Predator at (x,y)
-				if ((x-1==xn && y-1==yn) || (x==xn && y-1==yn) || (x+1==xn && y-1==yn) || (x-1==xn && y==yn) || (x+1==xn && y==yn) || (x-1==xn && y-1==yn) || (x==xn && y+1==yn) || (x+1==xn && y+1==yn))
+				int xn = a.x; 
+				int yn = a.y;
+				int dx=x-xn;
+				dx=Math.abs(dx);
+				dx=Math.min(dx,size-dx);
+				int dy=y-yn;
+				dy=Math.abs(dy);
+				dy=Math.min(dy,size-dy);
+				
+				
+				if (dx < 2 && dy < 2)
 				{	
-					targets.add(a);
+					targets.add( (Prey) a);
 				}
 			}
 		}
-		
 		return targets;
 		
 	}
 	
-	
-	
-
 }

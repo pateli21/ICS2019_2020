@@ -1,4 +1,3 @@
-package predatorprey;
 
 public class Prey extends Animal{
 	
@@ -31,7 +30,7 @@ public class Prey extends Animal{
 	}
 	
 	public void checkDeath(){
-		if(energy <= 0)
+		if(energy <= 3)
 			die();
 	}
 	
@@ -40,7 +39,6 @@ public class Prey extends Animal{
 	}
 	
 	public void act(){
-		
 		graze = !graze;
 		
 		if (graze)
@@ -51,6 +49,7 @@ public class Prey extends Animal{
 			int dy =  (int) ( Math.random()*(1+1+1) ) -1;
 			
 			move(dx, dy);
+
 			if (!(dx ==0 && dy ==0)){
 				energy --;
 			}
@@ -62,6 +61,5 @@ public class Prey extends Animal{
 	
 	
 }
-
 
 

@@ -1,4 +1,4 @@
-package predatorprey;
+import java.util.*;
 
 import java.util.Collections;
 
@@ -16,29 +16,24 @@ public class Predator extends Animal{
 	}
 	
 	public void eat(){
-		ArrayList<Prey> targets;
-		targets = eco.getAdjacentPrey(x, y);
-		
-		
-		if ( targets.isEmpty() ){
-			energy +=0;
-		} else {
-			Collections.shuffle(targets);
-			Prey p = targets.get(0);
-			p.die();
-			energy += 5;
+		int count = 0;
+		if (count == 1){
+			ArrayList<Prey> targets;
+			targets = eco.getAdjacentPrey(x, y);
+			
+			
+			if ( targets.isEmpty() ){
+				energy += 0;
+			} else {
+				Collections.shuffle(targets);
+				Prey p = targets.get(0);
+				p.die();
+				energy += 2;
+				System.out.println(energy);
+			}
+			count = 0;
 		}
-		
-		
-		// 	check to see if Prey is adjacent
-		//		???
-		//	If one or more adjacent prey animals
-		//		Select 1
-		//			???
-		//		That Prey target dies
-		//			target.die()
-		//		Predator energy increases
-		//			energy += SomeAmount
+		if (count < 1) count ++;
 		
 	}
 	
@@ -53,10 +48,25 @@ public class Predator extends Animal{
 		a.eco = this.eco;
 		a.energy = 5;
 		eco.birthList.add(a);
+		System.out.println(energy);
+
+
 	}
 	
+	
+	public void checkDeath(){
+		if(energy <= 0)
+			die();
+	}
+	
+	public void die(){
+		eco.deathList.add(this);
+		System.out.println(energy);
+	}
+	
+	
 	public void act(){
-		
+		int count = 0;
 		eat();
 		
 	
@@ -64,8 +74,16 @@ public class Predator extends Animal{
 		int dy =  (int) ( Math.random()*(1+1+1) ) -1;
 		
 		move(dx, dy);
+		
+		
 		if (!(dx ==0 && dy ==0)){
-			energy --;
+			if (count < 2){
+				count ++;
+			}
+			if (count == 2){
+				energy -- ;
+				count = 0;
+			}
 		}
 			
 		checkDeath();

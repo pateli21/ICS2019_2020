@@ -1,7 +1,8 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import predatorprey.*;
+import java.util.ArrayList;
+
 
 public class Program{
 
