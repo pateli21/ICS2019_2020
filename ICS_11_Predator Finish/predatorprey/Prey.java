@@ -60,6 +60,7 @@ public class Prey extends Animal{
 		checkReproduce();
 	}
 	
+	
 }
 
 

@@ -97,7 +97,6 @@ public class Ecosystem{
 				drawGrid[i][j]=0;
 			}
 		}
-		
 		for(Animal a:animalList){
 			pos = a.getPos();
 			if (a instanceof Prey)					// if Prey
@@ -131,7 +130,7 @@ public class Ecosystem{
 				//check to see if it's a neighbor of Predator at (x,y)
 				if ((x-1==xn && y-1==yn) || (x==xn && y-1==yn) || (x+1==xn && y-1==yn) || (x-1==xn && y==yn) || (x+1==xn && y==yn) || (x-1==xn && y-1==yn) || (x==xn && y+1==yn) || (x+1==xn && y+1==yn))
 				{	
-					targets.add([ (Prey) a]);
+					targets.add(a);
 				}
 			}
 		}
@@ -139,5 +138,8 @@ public class Ecosystem{
 		return targets;
 		
 	}
+	
+	
+	
 
 }

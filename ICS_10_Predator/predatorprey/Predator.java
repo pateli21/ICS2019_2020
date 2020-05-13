@@ -1,5 +1,5 @@
 package predatorprey;
-
+import java.util.ArrayList;
 import java.util.Collections;
 
 public class Predator extends Animal{
@@ -72,9 +72,9 @@ public class Predator extends Animal{
 		int dy =  (int) ( Math.random()*(1+1+1) ) -1;
 			
 		move(dx, dy);
-		if (!(dx ==0 && dy ==0))
+		if (!(dx ==0 && dy ==0)){
 			energy --;
-			
+		}
 		checkDeath();
 		checkReproduce();
 	}
