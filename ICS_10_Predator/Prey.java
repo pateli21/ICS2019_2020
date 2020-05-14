@@ -1,4 +1,3 @@
-package predatorprey;
 
 public class Prey extends Animal{
 	

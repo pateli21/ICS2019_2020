@@ -1,4 +1,3 @@
-package predatorprey;
 import java.util.ArrayList;
 import java.util.Collections;
 

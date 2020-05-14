@@ -1,4 +1,3 @@
-package predatorprey;
 
 public class Animal{
 

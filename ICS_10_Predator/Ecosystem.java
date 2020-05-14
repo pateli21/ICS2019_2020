@@ -1,4 +1,3 @@
-package predatorprey;
 import java.util.ArrayList;
 import java.util.ArrayList.*;
 import java.util.Random;
@@ -131,7 +130,7 @@ public class Ecosystem{
 				//check to see if it's a neighbor of Predator at (x,y)
 				if ((x-1==xn && y-1==yn) || (x==xn && y-1==yn) || (x+1==xn && y-1==yn) || (x-1==xn && y==yn) || (x+1==xn && y==yn) || (x-1==xn && y-1==yn) || (x==xn && y+1==yn) || (x+1==xn && y+1==yn))
 				{	
-					targets.add([ (Prey) a]);
+					targets.add((Prey) a);
 				}
 			}
 		}
